@@ -3,16 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CallbackComponent } from './components/callback/callback.component';
+import { MaterialModule } from '../material.module';
+import { nzDesingModule } from '../nzdesing.module';
 
 
 @NgModule({
   declarations: [
-  
-    NavbarComponent
+    NavbarComponent,
+    CallbackComponent
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    nzDesingModule,
+    MaterialModule
+  ],
+  exports: [
+    NavbarComponent,
+    CallbackComponent
   ]
 })
 export class SharedModule { }
