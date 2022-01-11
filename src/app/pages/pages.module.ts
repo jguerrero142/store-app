@@ -3,15 +3,27 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
+import { CardComponent } from './components/card/card.component';
+import { CarrouselComponent } from './components/carrousel/carrousel.component';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { CartshopComponent } from './components/cartshop/cartshop.component';
+import { nzDesingModule } from '../nzdesing.module';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
   declarations: [
-    MenuComponent
+    MenuComponent,
+    CardComponent,
+    CarrouselComponent,
+    TabsComponent,
+    CartshopComponent
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    nzDesingModule,
+    MaterialModule
   ]
 })
 export class PagesModule { }

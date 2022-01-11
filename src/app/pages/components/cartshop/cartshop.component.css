@@ -1,0 +1,12 @@
+.btn-cart{
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    line-height: 50px;
+    bottom: 80px;
+    right: 20px;
+    color: white;
+    border-radius: 58px;
+    text-align: center;
+    z-index: 999;
+}

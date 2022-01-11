@@ -1,0 +1,20 @@
+[nz-carousel-content] {
+    height: 90px;
+  }
+
+  .header{
+      height: 35px;
+  }
+  
+  @media (max-width:750px){
+    [nz-carousel-content] {
+        height: 70px;
+      } 
+  }
+
+
+  @media (max-width:400px){
+    [nz-carousel-content] {
+        height: 50px;
+      } 
+  }
