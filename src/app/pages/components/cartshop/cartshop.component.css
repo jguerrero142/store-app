@@ -1,3 +1,10 @@
+.bag{
+    position: fixed;
+    bottom: 125px;
+    right: 25px;
+    z-index: 1000;
+}
+
 .btn-cart{
     position: fixed;
     width: 55px;
@@ -10,3 +17,4 @@
     text-align: center;
     z-index: 999;
 }
+

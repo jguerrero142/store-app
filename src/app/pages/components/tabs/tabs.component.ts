@@ -19,7 +19,6 @@ export class TabsComponent {
   getTipos(){
     this.service.getTipoProducts()
     .subscribe( resp => {
-      console.log(resp)
       this.tipos = resp;
       this.valid = true;
     })

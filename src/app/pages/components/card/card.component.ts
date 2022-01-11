@@ -27,4 +27,8 @@ export class CardComponent implements OnInit {
     })
   }
 
+  setTicket(producto: Producto){
+    this.service.setTicket = producto;
+  }
+
 }

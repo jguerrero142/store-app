@@ -1,7 +1,6 @@
 <div class="flex flex-wrap justify-center">
     
-      <!-- class="card h-24 w-64 sm:w-48 sm:h-48 p-0 m-2" -->
-        <div *ngFor="let producto of productos" class="bg-white rounded-md shadow-md h-44 w-64 m-2">
+        <div *ngFor="let producto of productos" class="bg-white rounded-md shadow-md h-44 w-64 m-2 cursor-pointer" (click)="setTicket(producto)">
           <img class="h-28 w-full" [src]="producto.image" >
           <div class="m-2">
             <span class="font-bold m-1"> {{ producto.valor }}</span>
