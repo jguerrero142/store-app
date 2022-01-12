@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { CardComponent } from './components/card/card.component';
@@ -23,7 +23,8 @@ import { MaterialModule } from '../material.module';
     CommonModule,
     PagesRoutingModule,
     nzDesingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class PagesModule { }

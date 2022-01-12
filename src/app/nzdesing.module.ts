@@ -41,6 +41,7 @@ import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 const icons = [
   MenuFoldOutline,
@@ -85,7 +86,8 @@ const icons = [
     NzProgressModule,
     NzAffixModule,
     NzBadgeModule,
-    NzDividerModule
+    NzDividerModule,
+    NzRadioModule
   ],
   exports: [
     NzIconModule,
@@ -122,7 +124,8 @@ const icons = [
     NzProgressModule,
     NzAffixModule,
     NzBadgeModule,
-    NzDividerModule
+    NzDividerModule,
+    NzRadioModule
   ],
   providers: [{ provide: NZ_ICONS, useValue: icons }],
 })

@@ -20,6 +20,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+ 
 
   getProductos(){
     this.service.getAllProducts().subscribe( data => {
@@ -28,7 +29,7 @@ export class CardComponent implements OnInit {
   }
 
   setTicket(producto: Producto){
-    this.service.setTicket = producto;
+    this.service.setItem = producto;
   }
 
 }

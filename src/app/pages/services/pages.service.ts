@@ -12,6 +12,7 @@ export class PagesService {
 
   public pedido: Pedido = new Pedido();
   public count: number = 0;
+  public total: number = 0;
 
   private pedido$: BehaviorSubject <Pedido> = new BehaviorSubject<Pedido>(this.pedido)
 
@@ -19,11 +20,22 @@ export class PagesService {
     return this.pedido$.asObservable();
   }
 
-  set setTicket( item: Producto){
-    this.pedido.productos.push(item);
-    this.count = this.pedido.productos.length;
+  set setPedido(item: Pedido){
+    this.pedido$.next(item);
   }
 
+  set setItem( item: Producto){
+    this.pedido.productos.push(item);
+    this.count = this.pedido.productos.length;
+    this.total = this.pedido.productos.reduce((suma,d)=> suma + d.valor, 0);
+  }
+
+  set deletItem(item: number){
+    this.pedido.productos.splice(item,1);
+    this.setPedido = this.pedido;
+    this.count = this.pedido.productos.length;
+    this.total = this.pedido.productos.reduce((suma,d)=> suma + d.valor, 0);
+  }
 
 
 

@@ -16,11 +16,12 @@
       [nzFooter]="modalFooter"
       (nzOnCancel)="handleCancel()"
     >
-      <ng-template #modalTitle>Custom Modal Title</ng-template>
+      <ng-template #modalTitle>Total Pedido - <nz-tag class="ml-1" [nzColor]="'#87d068'">{{service.total| currency}}</nz-tag> </ng-template>
 
       <ng-template #modalContent>
           <div>
-            <nz-table #basicTable [nzData]="productos" [nzBordered]="true">
+            <mat-slide-toggle color:#e43c26ec>Slide me!</mat-slide-toggle>
+            <nz-table #basicTable nzTemplateMode [nzBordered]="true">
                 <thead >
                   <tr>
                     <th >Producto</th>
@@ -29,12 +30,12 @@
                   </tr>
                 </thead>
                 <tbody >
-                  <tr *ngFor="let data of basicTable.data">
+                  <tr *ngFor="let data of productos;index as i">
                     <td >{{ data.name }}</td>
-                    <td >{{ data.valor | currency }}</td>
+                    <td ><nz-tag [nzColor]="'gold'">{{ data.valor | currency }}</nz-tag></td>
                     <td >
                       <button class="flex rounded-full justify-center items-center " nz-button
-                        nzType="primary">
+                        nzType="primary" (click)="deleteItem(i)">
                         <i class="far fa-trash-alt"></i>
                       </button>
                       
@@ -47,7 +48,7 @@
       </ng-template>
 
       <ng-template #modalFooter>
-        <span>Modal Footer:</span>
+        
         <button nz-button nzType="default" (click)="handleCancel()">Custom Callback</button>
         <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Custom Submit</button>
       </ng-template>
