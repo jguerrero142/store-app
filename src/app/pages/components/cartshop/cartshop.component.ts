@@ -13,10 +13,12 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 export class CartshopComponent implements OnInit {
 
   public productos: Producto[] = [];
+  private serviceD: boolean = false;
   isVisible = false;
   isConfirmLoading = false;
-  switchValue = false;
   loading = false;
+  
+  public serviceMode: any;
   constructor(public auth: AuthService,
               public service: PagesService,
               private toastr: ToastrService) {}
@@ -39,6 +41,23 @@ export class CartshopComponent implements OnInit {
     this.productos = data.productos;
     })
   }
+  //Confirma el estado de domicilio
+  setService(){
+    if(!this.serviceMode){
+      this.serviceD = true;
+    }else if(this.serviceMode){
+      this.serviceD = false;
+    }
+  }
+  //Envia el pedido con los productos
+  setPedido(): void {
+    this.isConfirmLoading = true;
+    this.service.sendPedidoApi(this.serviceD);
+    setTimeout(() => {
+      this.isVisible = false;
+      this.isConfirmLoading = false;
+    }, 1000);
+  }
 
   //Elimina los productos seleccionados
   deleteItem(item: number){
@@ -48,28 +67,9 @@ export class CartshopComponent implements OnInit {
     }
   }
 
-  handleOk(): void {
-    this.isConfirmLoading = true;
-    setTimeout(() => {
-      this.isVisible = false;
-      this.isConfirmLoading = false;
-    }, 1000);
-  }
-
   handleCancel(): void {
     this.isVisible = false;
   }
 
-  
-
-  clickSwitch(): void {
-    if (!this.loading) {
-      this.loading = true;
-      setTimeout(() => {
-        this.switchValue = !this.switchValue;
-        this.loading = false;
-      }, 3000);
-    }
-  }
-  
+   
 }

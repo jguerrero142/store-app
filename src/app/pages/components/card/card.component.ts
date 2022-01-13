@@ -13,14 +13,12 @@ export class CardComponent implements OnInit {
 
   public productos: Producto[] = [];
   public items: Producto[] = [];
-
   constructor( private service: PagesService) {
     this.getProductos();
    }
 
   ngOnInit(): void {
   }
- 
 
   getProductos(){
     this.service.getAllProducts().subscribe( data => {

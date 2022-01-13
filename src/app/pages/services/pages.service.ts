@@ -54,4 +54,8 @@ export class PagesService {
       return resp.map(d => Tipo.tipoJson(d))
     }));
   }
+
+    sendPedidoApi(item: boolean){
+        console.log(item)
+    }
 }
