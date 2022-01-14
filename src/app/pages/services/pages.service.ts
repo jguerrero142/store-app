@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { StoreService } from 'src/app/core/store.service';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ApiProducto, ApiTipo } from '../interface';
+import { ApiPedido } from '../interface/api-pedido';
 import { Pedido, Producto, Tipo } from '../models';
 
 @Injectable({
@@ -11,6 +13,7 @@ import { Pedido, Producto, Tipo } from '../models';
 export class PagesService {
 
   public pedido: Pedido = new Pedido();
+  public dataP: any;
   public count: number = 0;
   public total: number = 0;
 
@@ -39,7 +42,15 @@ export class PagesService {
 
 
 
-  constructor( private api: ApiService) { }
+  constructor( private api: ApiService,
+               private store: StoreService) { }
+
+  sendPedido(user: number, pedido: any){
+  return this.api.post(`pedido/${user}`,pedido)
+  .pipe(map( res =>{
+  return Pedido.pedidoJson(res);
+  }));
+  }
 
   getAllProducts(){
     return this.api.get<ApiProducto[]>('producto')
@@ -56,6 +67,28 @@ export class PagesService {
   }
 
     sendPedidoApi(item: boolean){
-        console.log(item)
-    }
+        const user = this.store.user.id_user!
+        const pedido = {
+          id_user: user,
+          valor: this.total,
+          servicio: item,
+          user_update: user
+        }
+      this.sendPedido(user, pedido).subscribe(res =>{
+        this.setPedido = res;
+        console.log(this.pedido$)
+      })
+        
+      }
+
+      setItemsPedido(){
+        const user = this.store.user.id_user
+        this.pedido.productos.map((item) =>{
+          // const ticket = {
+          //   user_ticket: user,
+          //   Producto: item.id,
+          //   id_pedido: 
+          // }
+        })
+      }
 }

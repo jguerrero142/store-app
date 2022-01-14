@@ -16,4 +16,9 @@ export class ApiService {
   get<T>(url: string): Observable<T>{
     return this.http.get<T>(`${this.API_URI}/${url}`)
   }
+
+  post<T, D>(url: string | number, data:D ): Observable<T> {
+    return this.http.post<T>(`${this.API_URI}/${url}`, data)
+  }
+
 }
