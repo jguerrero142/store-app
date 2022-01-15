@@ -34,8 +34,12 @@
                         </button>
                     </div>
                        
-                    <div class="cursor-pointer" routerLink="/Reserva">
+                    <div  *ngIf="rut" class="cursor-pointer" routerLink="/reserva">
                         <span class="text-white">Reservas</span>
+                    </div>
+
+                    <div *ngIf="!rut" class="cursor-pointer" routerLink="/menu">
+                        <span class="text-white">Menu</span>
                     </div>
                     
         

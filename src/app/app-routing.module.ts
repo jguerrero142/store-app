@@ -4,6 +4,7 @@ import { CallbackComponent } from './shared/components/callback/callback.compone
 
 const routes: Routes = [
   { path: 'index', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
+  { path: 'reserva', loadChildren: () => import('./reserva/reserva.module').then(m => m.ReservaModule) },
   { path: 'callback', component: CallbackComponent },
   { path: '**', redirectTo: 'index' },
 ];
