@@ -56,7 +56,7 @@ export class CartshopComponent implements OnInit {
     setTimeout(() => {
       this.isVisible = false;
       this.isConfirmLoading = false;
-    }, 1000);
+    }, 200);
   }
 
   //Elimina los productos seleccionados
