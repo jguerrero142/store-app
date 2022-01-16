@@ -1,4 +1,4 @@
-import { Ticket } from './';
+import { Ticket } from './ticket';
 
 
 export class Reserva {

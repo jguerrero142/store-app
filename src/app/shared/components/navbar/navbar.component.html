@@ -5,22 +5,6 @@
 
             <mat-toolbar (click)="auth.login()" class="flex justify-between cursor-pointer bg-red-600 h-16">                
               <div><span class="text-white">Ingresar</span></div>
-                
-                    <!-- <div >
-                            <span nz-tooltip nzTooltipTitle="www.fenis.com">
-                                <nz-avatar
-                                class="mat-elevation-z4 w-32 bg-white"
-                                [nzGap]="4"
-                                [nzSize]="40"
-                                nzSrc="assets/fenis.png"
-                                >
-                                </nz-avatar>
-                            </span>
-    
-                    </div> -->
-    
-                
-                
             </mat-toolbar>
         </div>
     
@@ -32,16 +16,19 @@
                     <div >
                         <app-drawer></app-drawer> 
                     </div>
-                       
-                    <div  *ngIf="rut" class="cursor-pointer" routerLink="/reserva">
+
+                    <div  *ngIf="!menu && store.user.id_role == 3" class="cursor-pointer" routerLink="/reserva">
                         <span class="text-white">Reservas</span>
                     </div>
 
-                    <div *ngIf="!rut" class="cursor-pointer" routerLink="/menu">
+                    <div  *ngIf="!menu && store.user.id_role == 5" class="cursor-pointer" routerLink="/caja">
+                        <span class="text-white">Caja</span>
+                    </div>
+
+                    <div *ngIf="menu == true" class="cursor-pointer" routerLink="/menu">
                         <span class="text-white">Menu</span>
                     </div>
                     
-        
                     <div  (click)="auth.logout()">
                         <span class="example-spacer"></span>
                         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">

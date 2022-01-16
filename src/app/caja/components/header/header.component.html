@@ -1,0 +1,19 @@
+<nz-page-header class="p-2" nzBackIcon>
+    <nz-page-header-title>{{store.user.name}}</nz-page-header-title>
+    <nz-page-header-subtitle><nz-tag *ngIf="store.user.id_role == 5 "[nzColor]="'#2db7f5'"> Caja </nz-tag>
+    </nz-page-header-subtitle>
+        
+    <nz-page-header-content >
+      <nz-row nzType class="grid grid-cols-12 gap-4 justify-items-center">
+          <div class="flex items-center col-span-4 ">
+            <nz-statistic nzTitle="Total" [nzValue]="total" nzPrefix="$" style="margin: 0 32px"></nz-statistic>
+          </div>
+          <div class="flex items-center col-span-4">
+            <nz-statistic nzTitle="Fiado" [nzValue]="fiado" nzPrefix="$"></nz-statistic>
+          </div>
+          <div class="flex items-center col-span-4">
+            <nz-statistic nzTitle="Pagó" [nzValue]="pago" nzPrefix="$"></nz-statistic>
+          </div>
+      </nz-row>
+    </nz-page-header-content>
+  </nz-page-header>

@@ -1,9 +1,10 @@
-<nz-table #nzTable  nzTemplateMode [nzPageSize]="10" [nzBordered]="true" >
+<nz-table #nzTable  class="w-full" nzTemplateMode [nzPageSize]="10" [nzBordered]="true" >
     <thead>
 
             <tr>
                 <th class="w-10 p-1"></th>
                 <th class="text-center"># Pedido</th>
+                <th class="text-center">Usuario</th>
                 <th class="text-center">Valor</th>
                 <th class="text-center">Servicio</th>
                 <th class="w-10"></th>
@@ -16,36 +17,30 @@
                         (nzExpandChange)="onExpandChange(data, $event)"
                         ></td>
                         <td class="text-center" ># {{ data.id_pedido }}</td>
+                        <td class="text-center" >{{ data.name }}</td>
                         <td class="text-center">{{ (data.valor | currency) }}</td>
                         <td class="text-center justify-center" *ngIf = "!data.servicio" ><mat-icon>store</mat-icon></td>
                         <td class="text-center justify-center" *ngIf = "data.servicio" ><mat-icon>delivery_dining</mat-icon></td>
                         <td class="w-10 p-0 ml-0 justify-center">
-                        <a class="flex h-6 w-6 rounded-full justify-center items-center p-0 " 
-                          nz-popconfirm
-                          nzPopconfirmTitle="Deseas Cancelar la Reserva?"
-                          nzPopconfirmPlacement="bottom"
-                          (nzOnConfirm)="deletItem(i, data.id_pedido)"
-                          (nzOnCancel)="cancel()">
-                          <i class="far fa-trash-alt p-0"></i>
-                        </a>
-                       </td>
+                            <app-showmetodo></app-showmetodo>
+                        </td>
                  </tr>
                     <tr [nzExpand]="expandSet.has(data.id_pedido)">
                       
                       <div class="flex">
-                        <nz-table class="w-screen" #basicTable [nzBordered]="true" nzTemplateMode [nzFrontPagination]="false" [nzData]="ticket">
+                        <nz-table class="w-full " #basicTable [nzBordered]="true" nzTemplateMode [nzFrontPagination]="false" [nzData]="ticket">
                           <thead>
                             <tr>
-                              <th class="text-center">Producto</th>
-                              <th class="text-center">Valor</th>
-                              <th class="text-center">Descripcion</th>
+                              <th class="w-32 ">Producto</th>
+                              <th class="w-32 text-center">Valor</th>
+                              <th class="w-32 text-center">Descripcion</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let data of basicTable.data">
-                              <td class="text-center">{{ data.name }}</td>
-                              <td class="text-center">{{ data.valor | currency }}</td>
-                              <td class="text-center">{{ (data.descripcion) }}</td>
+                              <td class="w-32 text-center">{{ data.name }}</td>
+                              <td class="w-32 text-center">{{ data.valor | currency }}</td>
+                              <td class="w-32 text-center">{{ (data.descripcion) }}</td>
                             </tr>
                           </tbody>
                         </nz-table>
@@ -58,3 +53,4 @@
     </tbody>
 
 </nz-table>
+

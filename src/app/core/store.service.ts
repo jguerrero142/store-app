@@ -26,7 +26,7 @@ export class StoreService {
                     this.loginUser(profile.sub!, profile).subscribe((s)=>{
                       if( s != null){
                         this.user = s;
-                        console.log(this.user)
+                        // console.log(this.user);
                       }
                     });
                   }

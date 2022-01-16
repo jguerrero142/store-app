@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ReservaService } from '../../services/reserva.service';
-import { Ticket, Reserva } from '../../models/';
+import { CajaService } from '../../services/caja.service';
+import { Ticket, Reserva } from 'src/app/caja/models';
+import { Factura } from '../../models/factura';
 
 @Component({
   selector: 'app-table-reserva',
@@ -17,13 +18,10 @@ export class TableReservaComponent implements OnInit {
   public isDisabled = false;
   public switchValue = false;
   public loading = false;
-  constructor( public service: ReservaService,
-    ) { }
+  constructor(public service: CajaService) { }
 
   ngOnInit(): void {
   }
-
-  cancel(){}
 
   onExpandChange(data: Reserva, checked: boolean): void {
     if (checked) {
@@ -32,6 +30,10 @@ export class TableReservaComponent implements OnInit {
     } else {
       this.expandSet.delete(data.id_pedido);
     }
+  }
+
+  setFactura(item: Reserva){
+    console.log(item)
   }
 
   
