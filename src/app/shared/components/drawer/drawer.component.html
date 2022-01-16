@@ -1,0 +1,37 @@
+<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="open()">
+    <mat-icon class="text-white">menu</mat-icon>
+</button>
+
+<nz-drawer
+        [nzClosable]="false"
+        [nzVisible]="visible"
+        [nzPlacement]="placement"
+        nzTitle="Perfil"
+        (nzOnClose)="close()"
+        >
+        <ng-container *nzDrawerContent>
+
+            <div class="flex justify-start" >
+                <span nz-tooltip nzTooltipTitle="www.fenis.com">
+                    <nz-avatar
+                    class="mat-elevation-z4 m-3 bg-white"
+                    [nzGap]="4"
+                    [nzSize]="80"
+                    [nzSrc]="store.user.picture"
+                    >
+                    </nz-avatar>
+                </span>
+            </div>
+            <div>
+                <h4 nz-typography>{{store.user.name}}</h4>
+                <h5 nz-typography>{{store.user.name_enterprise}}</h5>
+                <nz-divider nzText="Contacto" nzOrientation="left"></nz-divider>
+                <h5 nz-typography>{{store.user.email}}</h5>
+                <h5 nz-typography>{{store.user.contacto}}</h5>
+            </div>
+            
+            
+        </ng-container>
+</nz-drawer>
+
+

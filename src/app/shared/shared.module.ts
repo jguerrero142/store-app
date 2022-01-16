@@ -6,12 +6,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CallbackComponent } from './components/callback/callback.component';
 import { MaterialModule } from '../material.module';
 import { nzDesingModule } from '../nzdesing.module';
+import { DrawerComponent } from './components/drawer/drawer.component';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    CallbackComponent
+    CallbackComponent,
+    DrawerComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { nzDesingModule } from '../nzdesing.module';
   ],
   exports: [
     NavbarComponent,
-    CallbackComponent
+    CallbackComponent,
+    DrawerComponent
   ]
 })
 export class SharedModule { }

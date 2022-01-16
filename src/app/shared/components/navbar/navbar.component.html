@@ -25,13 +25,12 @@
         </div>
     
         <ng-template #navbar>
+            
             <div>
                 <mat-toolbar class="flex justify-between bg-red-600 h-16">
     
                     <div >
-                        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-                        <mat-icon class="text-white">menu</mat-icon>
-                        </button>
+                        <app-drawer></app-drawer> 
                     </div>
                        
                     <div  *ngIf="rut" class="cursor-pointer" routerLink="/reserva">
@@ -49,22 +48,10 @@
                         <mat-icon class="text-white">logout</mat-icon>
                         </button>
                     </div>
-                    <!-- <div >
-                        <span nz-tooltip nzTooltipTitle="www.fenis.com">
-                            <nz-avatar
-                              class="mat-elevation-z4 w-32 bg-white"
-                              [nzGap]="4"
-                              [nzSize]="40"
-                              nzSrc="assets/fenis.png"
-                            >
-                            </nz-avatar>
-                        </span>
-                    </div> -->
-        
-                    
                     
                 </mat-toolbar>
              </div>
+             
         </ng-template>
         
     </div>

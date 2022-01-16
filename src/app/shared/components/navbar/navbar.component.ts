@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { SharedService } from '../../services/shared.service';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,7 +13,7 @@ export class NavbarComponent {
 
   public ruta: any;
   public rut: boolean = false;
-
+  
   constructor(public auth: AuthService,
               public service: SharedService) { 
     this.auth.localAuthSetup();
@@ -32,4 +33,6 @@ export class NavbarComponent {
       }
     })
   }
+
+  
 }
