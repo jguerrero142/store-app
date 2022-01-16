@@ -1,0 +1,49 @@
+<nz-table #nzTable [nzData]="service.factura"  nzTableLayout="fixed"[nzPageSize]="10" [nzBordered]="true" >
+    <thead>
+
+            <tr>
+                <th class="w-10 p-1 justify-center content-center"></th>
+                <th class="text-center"># Pedido</th>
+                <th class="text-center">Valor</th>
+                <th class="text-center">Servicio</th>
+            </tr>
+    </thead>
+    <tbody >
+            <ng-container *ngFor="let data of nzTable.data" >
+                  <tr>
+                        <td [nzExpand]="expandSet.has(data.id_pedido)"
+                        (nzExpandChange)="onExpandChange(data, $event)"
+                        ></td>
+                        <td class="text-center" ># {{ data.id_pedido }}</td>
+                        <td class="text-center">{{ (data.valor | currency) }}</td>
+                        <td class="text-center justify-center" ><mat-icon>store</mat-icon></td>
+                 </tr>
+                    <tr [nzExpand]="expandSet.has(data.id_pedido)">
+                      
+                      <div class="flex">
+                        <nz-table class="w-screen" #basicTable [nzBordered]="true" [nzFrontPagination]="false" [nzData]="ticket">
+                          <thead>
+                            <tr>
+                              <th class="text-center">Producto</th>
+                              <th class="text-center">Valor</th>
+                              <th class="text-center">Descripcion</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let data of basicTable.data">
+                              <td class="text-center">{{ data.name }}</td>
+                              <td class="text-center">{{ data.valor | currency }}</td>
+                              <td class="text-center">{{ (data.descripcion) }}</td>
+                            </tr>
+                          </tbody>
+                        </nz-table>
+                      </div>
+                      
+                    </tr>
+
+            </ng-container>
+        
+    </tbody>
+
+</nz-table>
+

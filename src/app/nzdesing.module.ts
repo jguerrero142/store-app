@@ -42,6 +42,7 @@ import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 const icons = [
   MenuFoldOutline,
@@ -87,7 +88,8 @@ const icons = [
     NzAffixModule,
     NzBadgeModule,
     NzDividerModule,
-    NzRadioModule
+    NzRadioModule,
+    NzPopconfirmModule
   ],
   exports: [
     NzIconModule,
@@ -125,7 +127,8 @@ const icons = [
     NzAffixModule,
     NzBadgeModule,
     NzDividerModule,
-    NzRadioModule
+    NzRadioModule,
+    NzPopconfirmModule
   ],
   providers: [{ provide: NZ_ICONS, useValue: icons }],
 })

@@ -21,6 +21,7 @@ import { MaterialModule } from '../material.module';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     PagesRoutingModule,
     nzDesingModule,
     MaterialModule,

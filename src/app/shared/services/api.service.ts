@@ -21,4 +21,12 @@ export class ApiService {
     return this.http.post<T>(`${this.API_URI}/${url}`, data)
   }
 
+  put<T, D>(url: string, data: D): Observable<T> {
+    return this.http.put<T>(`${this.API_URI}/${url}`, data );
+  }
+
+  delete<T>(url: string): Observable<T> {
+    return this.http.delete<T>(`${this.API_URI}/${url}`);
+  }
+
 }

@@ -1,0 +1,17 @@
+
+  
+    <nz-page-header class="p-2" nzBackIcon>
+    <nz-page-header-title>{{store.user.name}}</nz-page-header-title>
+    <nz-page-header-subtitle>{{store.user.name_enterprise}}</nz-page-header-subtitle>
+        
+    <nz-page-header-content >
+      <nz-row nzType="flex justify-start">
+
+        <nz-statistic nzTitle="Pendiente" [nzValue]="total" nzPrefix="$" style="margin: 0 32px"></nz-statistic>
+
+        <nz-statistic nzTitle="Pago" [nzValue]="totalfa" nzPrefix="$"></nz-statistic>
+      </nz-row>
+    </nz-page-header-content>
+  </nz-page-header>
+
+  
