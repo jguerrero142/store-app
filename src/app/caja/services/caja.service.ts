@@ -27,7 +27,7 @@ export class CajaService {
   set setReservas(item: Reserva[]){
     this.reserva = item;
     this.reserva$.next(this.reserva);
-    console.log(this.reserva$)
+    // console.log(this.reserva$)
   }
 
   set deletReserva(item: number){
@@ -45,7 +45,7 @@ export class CajaService {
   set setFacturas(item: Factura[]){
     this.factura = item;
     this.factura$.next(this.factura);
-    // console.log(this.factura$);
+    console.log(this.factura$);
   }
 
   private users$: BehaviorSubject<User[]>= new BehaviorSubject<User[]>(this.users);
@@ -74,8 +74,9 @@ export class CajaService {
   constructor(private api: ApiService,
               private store: StoreService) { }
 
-              setFacturaApi(){
-                
+              setFacturaApi( user: number, data: any){
+                return this.api.post(`factura/${user}`, data)
+                .subscribe(res => {console.log(res)})
               }
 
               getAllReserva(){
@@ -86,7 +87,7 @@ export class CajaService {
               }
           
               getAllFactura(){
-                return this.api.get<ApiAllFactura []>(`factura/`)
+                return this.api.get<ApiAllFactura[]>(`factura/`)
                 .pipe(map( d =>{
                   return d.map( d => Factura.facturaJson(d))
                 }));

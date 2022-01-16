@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { MetodoPago } from '../../models';
 import { CajaService } from '../../services/caja.service';
+import { StoreService } from '../../../core/store.service';
+import { Reserva } from '../../../reserva/models/reserva';
+
 
 @Component({
   selector: 'app-showmetodo',
@@ -7,53 +12,36 @@ import { CajaService } from '../../services/caja.service';
   styleUrls: ['./showmetodo.component.css']
 })
 export class ShowmetodoComponent implements OnInit {
-  isDisabled = false;
-  switchValue = false;
-  switchValue2 = false;
-  loading = false;
+  
+  @Input() id!: Reserva;
   isVisible = false;
-
-  isLoadingTwo = false;
-  inputValue: string | null = null;
-  textValue: string | null = null;
-
-  constructor(public service: CajaService) { }
+  
+  
+  constructor(public service: CajaService,
+              private store: StoreService) { }
 
   ngOnInit(): void {
   }
-
+   
   showModal(){
     this.isVisible = true;
   }
 
-  clickSwitch2(id?: number): void {
-    if (!this.loading && this.isDisabled == false) {
-      this.loading = true;
-      setTimeout(() => {
-        this.switchValue2 = !this.switchValue2;
-        // if(this.switchValue2){
-        //   this.idMetodo = id;
-        //   console.log(this.idMetodo)
-        // }
-        this.isDisabled = true;
-        this.loading = false;
-      }, 1000);
+  setFactura(item?: MetodoPago){
+    console.log(item);
+    this.isVisible = false;
+    console.log(this.id)
+    const data = {
+      id_user: this.store.user.id_user,
+      id_pedido: this.id.id_pedido,
+      valor: this.id.valor,
+      user_update: this.store.user.id_user,
     }
-  }
-
-  setFactura(){
-    // this.storeEffects.setFacturar(this.total,this.tickets,this.switchValue,this.idMetodo);
-    // this.isVisible = false;
-    // this.isVisible2 = false;
-    // this.tickets = [];
-    // this.menuServices.DeletTickets = this.tickets;
+    this.service.setFacturaApi( data.id_user! , data);
   }
 
   handleCancel(): void {
     this.isVisible = false;
-    // this.isDisabled = false;
-    // this.switchValue2 = !this.switchValue2;
-    // this.idMetodo = 1
   }
 
 }

@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
                   this.suscripcion.push(
                     this.service.getAllFactura().subscribe(d=>{
                       this.service.setFacturas = d;
+                      console.log(d)
                     }));
                   
                   this.suscripcion.push(

@@ -22,7 +22,7 @@
                         <td class="text-center justify-center" *ngIf = "!data.servicio" ><mat-icon>store</mat-icon></td>
                         <td class="text-center justify-center" *ngIf = "data.servicio" ><mat-icon>delivery_dining</mat-icon></td>
                         <td class="w-10 p-0 ml-0 justify-center">
-                            <app-showmetodo></app-showmetodo>
+                            <app-showmetodo [id]="data" ></app-showmetodo>
                         </td>
                  </tr>
                     <tr [nzExpand]="expandSet.has(data.id_pedido)">

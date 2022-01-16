@@ -49,7 +49,7 @@
       </ng-template>
 
       <ng-template #modalFooter>
-        <mat-slide-toggle class="m-3" (click)="setService()" [(ngModel)]="serviceMode">Domicilio</mat-slide-toggle>
+        <mat-slide-toggle color="warn" class="m-3" (click)="setService()" [(ngModel)]="serviceMode">Domicilio</mat-slide-toggle>
         <button nz-button nzType="primary" (click)="setPedido()" [nzLoading]="isConfirmLoading">Confirmar</button>
       </ng-template>
     </nz-modal>

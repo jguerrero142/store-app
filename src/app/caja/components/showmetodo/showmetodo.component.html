@@ -2,7 +2,7 @@
 
 <nz-modal
         [(nzVisible)]="isVisible"
-        nzOkText="Facturar"
+        nzOkText="Enviar"
         nzCancelText="Cancelar"
         (nzOnOk)="setFactura()"
         (nzOnCancel)="handleCancel()"
@@ -10,17 +10,18 @@
         <ng-container *nzModalContent>
           <h5 class="text-center p-2" nz-typography> Confirma el metodo de pago</h5>
           <div class="flex justify-between px-5">            
-            <div  class="" *ngFor="let metodo of service.metodo">
+            <div *ngFor="let metodo of service.metodo">
 
-              <nz-card  nzType="inner">
-                            
-                <h5 nz-typography>{{ metodo.metodo_name}}</h5>
-                <nz-avatar class="p-2"  [nzShape]="'square'" [nzSize]="64" [nzSrc]="metodo.image"></nz-avatar>
-                <nz-switch [(ngModel)]="switchValue2" [nzDisabled]="isDisabled" (click)="clickSwitch2(metodo.id_metodo )" [nzLoading]="loading"></nz-switch>
-
-              </nz-card>              
+              <div class="bg-white rounded-md shadow-md m-2 cursor-pointer" (click)="setFactura(metodo)">
+                <div class="m-2">
+                  <h5 nz-typography>{{ metodo.metodo_name}}</h5>
+                  <nz-avatar class="p-2"  [nzShape]="'square'" [nzSize]="64" [nzSrc]="metodo.image"></nz-avatar>
+                </div>                  
+              </div>
+              
             </div>
           </div>
           
         </ng-container>
+
 </nz-modal>
