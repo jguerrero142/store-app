@@ -9,19 +9,51 @@
     </button>
 </div>
 
-<nz-modal
+
+
+  <nz-modal
       [(nzVisible)]="isVisible"
       [nzTitle]="modalTitle"
       [nzContent]="modalContent"
       [nzFooter]="modalFooter"
       (nzOnCancel)="handleCancel()"
-    >
-      <ng-template #modalTitle>Total Pedido - <nz-tag class="ml-1" [nzColor]="'#87d068'">{{service.total| currency}}</nz-tag>
+    > 
+      <ng-template #modalTitle>
+        <h4 nz-typography>Total Pedido - <nz-tag class="ml-1" [nzColor]="'#87d068'">{{service.total| currency}}</nz-tag></h4>
        </ng-template>
 
       <ng-template #modalContent>
           <div>
-            
+
+            <div  *ngIf="store.user.id_role == 5" class="m-2">
+              <h4 nz-typography>Pedido a nombre de {{ selectedValue?.name }}</h4>
+              <nz-select 
+              nzShowSearch 
+              nzAllowClear 
+              nzPlaceHolder="Selecciona Usuario" 
+              [(ngModel)]="selectedValue" 
+              (ngModelChange)="log($event)" >
+
+              <nz-option *ngFor="let user of users"  [nzLabel]="user.name" [nzValue] = "user"></nz-option>
+                  
+              </nz-select>
+           
+            </div>
+            <div  *ngIf="store.user.id_role == 5" class="m-2">
+              <h5 nz-typography>Metodo de Pago {{ selectedValue2?.metodo_name }}</h5>
+              <nz-select 
+              [nzDisabled]="Mdisable" 
+              nzShowSearch 
+              nzAllowClear 
+              nzPlaceHolder="Selecciona Usuario" 
+              [(ngModel)]="selectedValue2" 
+              (ngModelChange)="logg($event)" >
+
+                  <nz-option *ngFor="let metodo of metodos"  [nzLabel]="metodo.metodo_name" [nzValue] = "metodo"></nz-option>
+                  
+              </nz-select>
+           
+            </div>
             <nz-table #basicTable nzTemplateMode  [nzBordered]="true">
                 <thead >
                   <tr>
@@ -33,11 +65,15 @@
                 <tbody >
                   <tr *ngFor="let data of productos;index as i">
                     <td >{{ data.name }}</td>
-                    <td ><nz-tag [nzColor]="'gold'">{{ data.valor | currency }}</nz-tag></td>
                     <td >
-                      <button class="flex rounded-full justify-center items-center " nz-button
-                        nzType="primary" (click)="deleteItem(i)">
-                        <i class="far fa-trash-alt"></i>
+                      <nz-tag 
+                      [nzColor]="'gold'">{{ data.valor | currency }}</nz-tag></td>
+                    <td >
+                      <button class="flex rounded-full justify-center items-center " 
+                      nz-button
+                      nzType="primary" 
+                      (click)="deleteItem(i)">
+                      <i class="far fa-trash-alt"></i>
                       </button>
                       
                     </td>
@@ -49,8 +85,29 @@
       </ng-template>
 
       <ng-template #modalFooter>
-        <mat-slide-toggle color="warn" class="m-3" (click)="setService()" [(ngModel)]="serviceMode">Domicilio</mat-slide-toggle>
-        <button nz-button nzType="primary" (click)="setPedido()" [nzLoading]="isConfirmLoading">Confirmar</button>
+        <mat-slide-toggle 
+        color="warn" 
+        class="m-3" 
+        (click)="setService()" 
+        [(ngModel)]="serviceMode">Domicilio
+      </mat-slide-toggle>
+
+        <button nz-button
+        *ngIf="store.user.id_role == 3" 
+        nzType="primary" 
+        (click)="setPedido()" 
+        [nzLoading]="isConfirmLoading">Confirmar
+        </button>
+
+        <button nz-button
+        *ngIf="store.user.id_role == 5" 
+        nzType="primary" 
+        (click)="setFactura()" 
+        [nzLoading]="isConfirmLoading">Confirmar
+        </button>
       </ng-template>
-    </nz-modal>
+  </nz-modal>
+
+
+
 

@@ -5,6 +5,7 @@ import { StoreService } from 'src/app/core/store.service';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ApiProducto, ApiTipo } from '../interface';
 import { Pedido, Producto, Tipo, Data } from '../models';
+import { CajaService } from '../../caja/services/caja.service';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,7 @@ export class PagesService {
 
 
   constructor( private api: ApiService,
+               private service: CajaService,
                private store: StoreService) { }
 
   sendPedido(user: number, pedido: any){
@@ -84,6 +86,37 @@ export class PagesService {
         
       }
 
+      sendfacturaApi(item: boolean, metodo: number){
+        const metodo$ = metodo
+        const user = this.store.user.id_user!
+        const pedido = {
+          id_user: user,
+          valor: this.total,
+          servicio: item,
+          estado_valor: 2,
+          metodo_pago: metodo$,
+          pedido_estado: 3,
+          user_update: user
+        }
+        this.sendPedido(user, pedido).subscribe(res =>{
+          this.dataP = res;
+          if(this.dataP != null){
+            const data = {
+              id_user: this.store.user.id_user,
+              id_pedido: this.dataP.id_pedido,
+              valor: this.dataP.valor,
+              id_metodo: metodo$,
+              estado_valor: 2,
+              estado_factura: 3,
+              user_update: this.store.user.id_user,
+            }
+            this.service.setFacturaApi( data.id_user! , data);
+            this.setItemsApi();
+          }
+          
+        })
+      }
+      
       setItemsApi(){
         const user = this.store.user.id_user
         this.pedido.productos.map((item) =>{

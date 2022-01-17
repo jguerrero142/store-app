@@ -56,7 +56,7 @@ export class CajaService {
   set setUsers(item: User[]){
     this.users = item;
     this.users$.next(this.users);
-    // console.log(this.users$);
+    console.log(this.users$);
   }
 
   private metodo$: BehaviorSubject<MetodoPago[]>= new BehaviorSubject<MetodoPago[]>(this.metodo);
@@ -77,6 +77,11 @@ export class CajaService {
               setFacturaApi( user: number, data: any){
                 return this.api.post(`factura/${user}`, data)
                 .subscribe(res => {console.log(res)})
+              }
+
+              updatePedido( id: any, data: any){
+                return this.api.put(`pedido/${id}`, data)
+                .subscribe(r => {console.log(r)})
               }
 
               getAllReserva(){

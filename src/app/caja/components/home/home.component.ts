@@ -33,15 +33,15 @@ export class HomeComponent implements OnInit {
                       console.log(d)
                     }));
                   
-                  this.suscripcion.push(
-                  this.service.getAllUser().subscribe(d=>{
-                  this.service.setUsers = d;
-                  }));
+                  // this.suscripcion.push(
+                  // this.service.getAllUser().subscribe(d=>{
+                  // this.service.setUsers = d;
+                  // }));
 
-                  this.suscripcion.push(
-                  this.service.getAllMetodo().subscribe(d=>{
-                    this.service.setMetodo = d;
-                  }));
+                  // this.suscripcion.push(
+                  // this.service.getAllMetodo().subscribe(d=>{
+                  //   this.service.setMetodo = d;
+                  // }));
               
                   this.suscripcion.push(
                   this.service.getAllTicket().subscribe(d=>{
