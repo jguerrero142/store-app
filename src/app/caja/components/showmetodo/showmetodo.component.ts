@@ -38,7 +38,7 @@ export class ShowmetodoComponent implements OnInit {
       console.log(this.metodo);
     }
     console.log(this.id)
-    const data = {
+    const factura = {
       id_user: this.store.user.id_user,
       id_pedido: this.id.id_pedido,
       valor: this.id.valor,
@@ -47,7 +47,7 @@ export class ShowmetodoComponent implements OnInit {
       estado_factura: 3,
       user_update: this.store.user.id_user,
     }
-    this.service.setFacturaApi( data.id_user! , data);
+    this.service.setFacturaApi( factura.id_user! , factura);
     //Actualizamos el pedido
     const pedido ={
       estado_valor: this.estado,
@@ -56,6 +56,7 @@ export class ShowmetodoComponent implements OnInit {
       user_update: this.store.user.id_user
     }
     this.service.updatePedido(this.id.id_pedido,pedido);
+    this.service.deletReserva = this.id.id_pedido;
     this.isVisible = false;
   }
 

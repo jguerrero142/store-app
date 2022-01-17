@@ -136,4 +136,53 @@ export class PagesService {
         this.total = 0;
         this.setPedido = this.pedido;
       }
+
+
+      sendfacturaApi2(item: boolean, iduser: number){
+        const user = iduser
+        const pedido = {
+          id_user: user,
+          valor: this.total,
+          servicio: item,
+          estado_valor: 1,
+          pedido_estado: 3,
+          user_update: this.store.user.id_user
+        }
+        this.sendPedido(user, pedido).subscribe(res =>{
+          this.dataP = res;
+          if(this.dataP != null){
+            const data = {
+              id_user: user,
+              id_pedido: this.dataP.id_pedido,
+              valor: this.dataP.valor,
+              estado_valor: 1,
+              estado_factura: 3,
+              user_update: this.store.user.id_user,
+            }
+            this.service.setFacturaApi( data.id_user! , data);
+            this.setItemsApi2();
+          }
+          
+        })
+      }
+      
+      setItemsApi2(){
+        const user = this.store.user.id_user
+        this.pedido.productos.map((item) =>{
+          const ticket = {
+          user_ticket: user,
+          Producto: item.id,
+          id_pedido: this.dataP.id_pedido,
+          producto_tipo: item.producto_tipo,
+          };
+          return this.api.post(`ticket/`,ticket)
+          .subscribe(res =>{
+            console.log(res)
+          })
+        })
+        this.pedido.productos = []
+        this.count = 0;
+        this.total = 0;
+        this.setPedido = this.pedido;
+      }
 }

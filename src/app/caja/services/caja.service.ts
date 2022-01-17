@@ -27,14 +27,19 @@ export class CajaService {
   set setReservas(item: Reserva[]){
     this.reserva = item;
     this.reserva$.next(this.reserva);
-    // console.log(this.reserva$)
+    console.log(this.reserva$)
   }
-
   set deletReserva(item: number){
-    this.reserva.splice(item,1);
+    const i = this.reserva.findIndex( d=> d.id_pedido == item)
+    this.reserva.splice(i,1);
     this.reserva$.next(this.reserva);
     console.log(this.reserva$)
   }
+  // set deletReserva(item: number){
+  //   this.reserva.splice(item,1);
+  //   this.reserva$.next(this.reserva);
+  //   console.log(this.reserva$)
+  // }
 
   private factura$: BehaviorSubject<Factura[]>= new BehaviorSubject<Factura[]>(this.factura);
 
@@ -45,7 +50,7 @@ export class CajaService {
   set setFacturas(item: Factura[]){
     this.factura = item;
     this.factura$.next(this.factura);
-    console.log(this.factura$);
+    //console.log(this.factura$);
   }
 
   private users$: BehaviorSubject<User[]>= new BehaviorSubject<User[]>(this.users);
@@ -56,7 +61,7 @@ export class CajaService {
   set setUsers(item: User[]){
     this.users = item;
     this.users$.next(this.users);
-    console.log(this.users$);
+    //console.log(this.users$);
   }
 
   private metodo$: BehaviorSubject<MetodoPago[]>= new BehaviorSubject<MetodoPago[]>(this.metodo);

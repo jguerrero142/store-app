@@ -77,7 +77,13 @@ export class CartshopComponent implements OnInit, OnDestroy {
       this.isConfirmLoading = false;
      }, 200);
     }else{
-      console.log(this.client$);
+      this.isConfirmLoading = true;
+      this.service.sendfacturaApi2(this.serviceD, this.client$ );
+      this.metodo$ = 1;
+      setTimeout(() => {
+      this.isVisible = false;
+      this.isConfirmLoading = false;
+     }, 200);
     }
     
     // this.isConfirmLoading = true;
