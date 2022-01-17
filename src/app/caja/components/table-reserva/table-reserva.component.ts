@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CajaService } from '../../services/caja.service';
 import { Ticket, Reserva } from 'src/app/caja/models';
-import { Factura } from '../../models/factura';
 
 @Component({
   selector: 'app-table-reserva',
@@ -31,11 +30,6 @@ export class TableReservaComponent implements OnInit {
       this.expandSet.delete(data.id_pedido);
     }
   }
-
-  setFactura(item: Reserva){
-    console.log(item)
-  }
-
   
   deletItem(index: number , pedido: number){
     this.service.deletReserva = index;
