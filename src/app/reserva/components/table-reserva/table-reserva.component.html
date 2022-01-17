@@ -1,4 +1,13 @@
-<nz-table #nzTable  nzTemplateMode [nzPageSize]="10" [nzBordered]="true" >
+<ng-container *ngIf="service.reserva.length == 0; else table">
+  <div class="flex justify-center content-center m-12">
+    <nz-spin class="mr-6" nzSimple [nzSize]="'large'"></nz-spin>
+    <div nz-typography><h5>Esperando reservas...</h5></div>
+    
+  </div>
+</ng-container>
+
+<ng-template #table>
+<nz-table class="w-full" nzTemplateMode [nzPageSize]="10" [nzBordered]="true" >
     <thead>
 
             <tr>
@@ -33,19 +42,19 @@
                     <tr [nzExpand]="expandSet.has(data.id_pedido)">
                       
                       <div class="flex">
-                        <nz-table class="w-screen" #basicTable [nzBordered]="true" nzTemplateMode [nzFrontPagination]="false" [nzData]="ticket">
+                        <nz-table class="w-full" #basicTable [nzBordered]="true" nzTemplateMode [nzFrontPagination]="false" [nzData]="ticket">
                           <thead>
                             <tr>
-                              <th class="text-center">Producto</th>
-                              <th class="text-center">Valor</th>
-                              <th class="text-center">Descripcion</th>
+                              <th class="w-32 text-center">Producto</th>
+                              <th class="w-32 text-center">Valor</th>
+                              <th class="w-32 text-center">Descripcion</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let data of basicTable.data">
-                              <td class="text-center">{{ data.name }}</td>
-                              <td class="text-center">{{ data.valor | currency }}</td>
-                              <td class="text-center">{{ (data.descripcion) }}</td>
+                              <td class="w-32 text-center">{{ data.name }}</td>
+                              <td class="w-32 text-center">{{ data.valor | currency }}</td>
+                              <td class="w-32 text-center">{{ (data.create_at | date) }}</td>
                             </tr>
                           </tbody>
                         </nz-table>
@@ -58,3 +67,5 @@
     </tbody>
 
 </nz-table>
+
+</ng-template>

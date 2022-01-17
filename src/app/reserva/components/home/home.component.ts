@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.suscripcion.push(
       this.service.getAllTicketUsuario().subscribe(d=>{
+        if(d.length >0){console.log(d)}
         this.service.reserva.forEach((item, index)=>{
           const t = d.filter(d=> d.id_pedido == item.id_pedido);
           this.service.reserva[index].ticket = t;

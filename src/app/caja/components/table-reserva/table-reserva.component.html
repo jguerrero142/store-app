@@ -1,4 +1,14 @@
-<nz-table #nzTable  class="w-full" nzTemplateMode [nzPageSize]="10" [nzBordered]="true" >
+<ng-container *ngIf="service.reserva.length == 0; else table">
+  <div class="flex justify-center content-center m-12">
+    <nz-spin class="mr-6" nzSimple [nzSize]="'large'"></nz-spin>
+    <div nz-typography><h5>Esperando reservas...</h5></div>
+    
+  </div>
+</ng-container>
+
+
+<ng-template #table>
+<nz-table  class="w-full" nzTemplateMode [nzPageSize]="10" [nzBordered]="true" >
     <thead>
 
             <tr>
@@ -54,3 +64,4 @@
 
 </nz-table>
 
+</ng-template>
