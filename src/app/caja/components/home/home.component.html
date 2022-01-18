@@ -1,12 +1,23 @@
-<app-header></app-header>
-<div class="justify-center">
+<nz-tabset nzCentered>                      
+    <nz-tab nzTitle="CAJA">
+        
+            <app-header></app-header>
+            <div class="justify-center">
 
-    <nz-tabset nzCentered>                      
-      <nz-tab nzTitle="RESERVAS">
-          <app-table-reserva></app-table-reserva>
-      </nz-tab>
-      <nz-tab nzTitle="FACTURAS">
-          <app-table-factura></app-table-factura>
-      </nz-tab>
-  </nz-tabset>
-</div>
+                <nz-tabset nzCentered>                      
+                <nz-tab nzTitle="RESERVAS">
+                    <app-table-reserva></app-table-reserva>
+                </nz-tab>
+                <nz-tab nzTitle="FACTURAS">
+                    <app-table-factura></app-table-factura>
+                </nz-tab>
+            </nz-tabset>
+            </div>
+    </nz-tab>
+    <nz-tab nzTitle="INVENTARIO">
+        <app-inventario></app-inventario>
+    </nz-tab>
+</nz-tabset>
+
+
+

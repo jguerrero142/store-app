@@ -6,7 +6,6 @@ import { Reserva, Factura, Ticket } from 'src/app/reserva/models';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ApiAllFactura, ApiAllReserva, ApiAllTicket,ApiMetodoPago } from '../interface';
 import { User, MetodoPago } from '../models/';
-import { ApiTicket } from '../../reserva/interface/api-ticket';
 import { ApiItems } from '../interface/api-items';
 
 @Injectable({
@@ -134,6 +133,10 @@ export class CajaService {
               
               }
 
+              getInventario(){
+                return this.api.get<ApiItems[]>('inventario/')
+              }
+
               deletReservaApi(id: number){
                 return this.api.delete(`pedido/${id}`);
               }
@@ -156,8 +159,8 @@ export class CajaService {
                       id_producto: d.id,
                       detalle: "VENTA CAJA",
                       cantidad: d.cantidad,
-                      valor_unit: d.unitario,
-                      valor_total: d.total,
+                      valor_unit: d.valor_unit,
+                      valor_total: d.valor_total,
                       user_update: this.store.user.id_user,
                     }
                   return this.api.post("inventario/create", data).subscribe(d=> console.log(d))

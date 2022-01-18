@@ -1,7 +1,9 @@
 export interface ApiItems {
     id: number,
+    id_producto: number,
+    detalle: string,
     name: string,
     cantidad: number,
-    unitario: number,
-    total: number,
+    valor_unit: number,
+    valor_total: number,
 }

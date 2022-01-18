@@ -1,0 +1,60 @@
+<div class="flex flex-wrap justify-center">
+    
+    <div *ngFor="let producto of productos" class="bg-white rounded-md shadow-md h-44 w-80 sm:w-64 m-2 cursor-pointer" (click)="showModal(producto.id)">
+      <img class="h-28 w-full" [src]="producto.image" >
+      <div class="m-2">
+        <span class="font-bold m-1"> {{ producto.valor }}</span>
+        <p class="block text-gray-500 m-2"> {{ producto.name }}</p>
+      </div>
+    </div> 
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Invetario de Producto" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+      
+
+        <ng-container *ngIf="items.length == 0; else table">
+            <div class="flex justify-center content-center m-12">
+              <nz-spin class="mr-6" nzSimple [nzSize]="'large'"></nz-spin>
+              <div nz-typography><h5>Esperando items...</h5></div>
+              
+            </div>
+          </ng-container>
+          
+          
+          <ng-template #table>
+          <nz-table  class="w-full" nzTemplateMode [nzPageSize]="10" [nzBordered]="true" >
+              <thead>
+          
+                      <tr>
+                          
+                          <th class="text-center"># id</th>
+                          <th class="text-center">Detalle</th>
+                          <th class="text-center">Valor Unit</th>
+                          <th class="text-center">Valor Total</th>
+                          <th class="w-10 text-center">Cantidad</th>
+                      </tr>
+              </thead>
+              <tbody >
+                      <ng-container *ngFor="let data of items" >
+                            <tr>
+                                 
+                                  <td class="text-center" ># {{data.id}} </td>
+                                  <td class="text-center" >{{data.detalle}}</td>
+                                  <td class="text-center">{{data.valor_unit}}</td>
+                                  <td class="text-center">{{data.valor_total}}</td>
+                                  <td class="text-center" >{{data.cantidad}}</td>
+                           </tr>
+                                     
+                      </ng-container>
+                  
+              </tbody>
+          
+          </nz-table>
+        </ng-template>
+
+
+
+
+    </ng-container>
+  </nz-modal>

@@ -1,0 +1,30 @@
+<div>
+    <nz-page-header class="p-2 m-4">
+        
+        <nz-page-header-content >
+          <nz-row nzType class="grid grid-cols-8 gap-4 justify-items-center">
+              
+              <div class="flex col-span-4">
+                  <button nz-button nzType="primary" >Agregar Producto</button>
+              </div>
+              <div class="flex col-span-4">
+                <button nz-button nzType="primary" >Agregar Item</button>
+            </div>
+          </nz-row>
+        </nz-page-header-content>
+      </nz-page-header>
+</div>
+
+ <div class="m-4">
+    <mat-tab-group dynamicHeight>   
+        <div class="flex justify-center m-4 p-0">
+            <mat-tab  *ngFor = "let tipo of tipos" [label]="tipo.name_tipo">                    
+            
+                <div class="m-4">
+                    <app-card [tipoPro]="tipo.id_tipo"></app-card>
+                </div>
+            </mat-tab>
+        </div>                 
+        
+    </mat-tab-group>
+ </div>

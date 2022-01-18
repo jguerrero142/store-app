@@ -10,6 +10,8 @@ import { TableReservaComponent } from './components/table-reserva/table-reserva.
 import { TableFacturaComponent } from './components/table-factura/table-factura.component';
 import { ShowmetodoComponent } from './components/showmetodo/showmetodo.component';
 import { FormsModule } from '@angular/forms';
+import { InventarioComponent } from './components/inventario/inventario.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     TableReservaComponent,
     TableFacturaComponent,
-    ShowmetodoComponent
+    ShowmetodoComponent,
+    InventarioComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
