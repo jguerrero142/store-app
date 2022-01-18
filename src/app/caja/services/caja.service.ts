@@ -6,6 +6,8 @@ import { Reserva, Factura, Ticket } from 'src/app/reserva/models';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ApiAllFactura, ApiAllReserva, ApiAllTicket,ApiMetodoPago } from '../interface';
 import { User, MetodoPago } from '../models/';
+import { ApiTicket } from '../../reserva/interface/api-ticket';
+import { ApiItems } from '../interface/api-items';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,7 @@ export class CajaService {
   public factura: Factura[] = [];
   public users: User[] = [];
   public metodo: MetodoPago[] = [];
+  public items: any;
   public ticket: Ticket = new Ticket();
 
   private reserva$: BehaviorSubject<Reserva[]> = new BehaviorSubject<Reserva[]>(this.reserva);
@@ -77,7 +80,9 @@ export class CajaService {
   }
 
   constructor(private api: ApiService,
-              private store: StoreService) { }
+              private store: StoreService) { 
+               
+              }
 
               setFacturaApi( user: number, data: any){
                 return this.api.post(`factura/${user}`, data)
@@ -124,9 +129,42 @@ export class CajaService {
                 }));
               }
 
+              getItems(){
+                return this.api.get<ApiItems[]>("inventario/getitem");
+              
+              }
+
               deletReservaApi(id: number){
                 return this.api.delete(`pedido/${id}`);
               }
+
+              closeBox(){
+                return this.api.get(`factura/closed/up`)
+                .subscribe(d=> {
+                  this.factura = [];
+                  this.setFacturas = this.factura;
+                  this.reserva = [];
+                  this.setReservas = this.reserva;
+                  this.getIventarioItems();
+                });
+              }
+
+              getIventarioItems(){
+                this.getItems().subscribe(d=>{
+                  d.map( d=>{
+                    const data ={
+                      id_producto: d.id,
+                      detalle: "VENTA CAJA",
+                      cantidad: d.cantidad,
+                      valor_unit: d.unitario,
+                      valor_total: d.total,
+                      user_update: this.store.user.id_user,
+                    }
+                  return this.api.post("inventario/create", data).subscribe(d=> console.log(d))
+                  })
+                })
+              }
+
           
               
 }

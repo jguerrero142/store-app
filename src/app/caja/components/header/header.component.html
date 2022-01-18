@@ -5,14 +5,24 @@
         
     <nz-page-header-content >
       <nz-row nzType class="grid grid-cols-12 gap-4 justify-items-center">
-          <div class="flex items-center col-span-4 ">
+          <div class="flex items-center col-span-3 ">
             <nz-statistic nzTitle="Total Venta" [nzValue]="total" nzPrefix="$" style="margin: 0 32px"></nz-statistic>
           </div>
           <div class="flex items-center col-span-4">
             <nz-statistic nzTitle="Fiado" [nzValue]="fiado" nzPrefix="$"></nz-statistic>
           </div>
-          <div class="flex items-center col-span-4">
+          <div class="flex items-center col-span-3">
             <nz-statistic nzTitle="Pagó" [nzValue]="pago" nzPrefix="$"></nz-statistic>
+          </div>
+          <div class="flex col-span-2">
+          <a  nz-popconfirm
+              nzPopconfirmTitle="Deseas Cerrar la Caja?"
+              nzPopconfirmPlacement="bottom"
+              (nzOnConfirm)="closeBox()"
+              (nzOnCancel)="cancel()">
+              <button nz-button nzType="primary" >Cerrar Caja</button>
+          </a>
+            
           </div>
       </nz-row>
     </nz-page-header-content>

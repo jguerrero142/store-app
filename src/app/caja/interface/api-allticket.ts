@@ -2,7 +2,7 @@ export interface ApiAllTicket{
 
     id_ticket?: number;
     user_ticket?: number;
-    Producto?: number;
+    producto?: number;
     created_at?: Date;
     id_pedido?: number;
     estado?: true;

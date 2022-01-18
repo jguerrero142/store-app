@@ -29,8 +29,7 @@ export class HomeComponent implements OnInit {
 
                   this.suscripcion.push(
                     this.service.getAllFactura().subscribe(d=>{
-                      this.service.setFacturas = d;
-                      console.log(d)
+                      this.service.setFacturas = d.filter(d => d.estado_factura! < 4);
                     }));
                   
                   // this.suscripcion.push(

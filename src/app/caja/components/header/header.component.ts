@@ -15,10 +15,11 @@ export class HeaderComponent implements OnInit {
   constructor(public store: StoreService,
               public service: CajaService) {
                 
-                this.getTotal();
+                
                }
 
   ngOnInit( ): void {
+    this.getTotal();
   }
 
   getTotal(){
@@ -37,6 +38,14 @@ export class HeaderComponent implements OnInit {
         this.pago = e.reduce((suma, d) => suma + d.valor, 0);
       }
     })
+  }
+
+  cancel(){}
+  closeBox(){
+    this.service.closeBox();
+    this.total = 0;
+    this.fiado = 0;
+    this.pago = 0;
   }
 
 }

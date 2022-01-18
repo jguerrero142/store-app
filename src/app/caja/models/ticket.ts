@@ -4,7 +4,7 @@ export class Ticket{
         return new Ticket(
             obj['id_ticket'],
             obj['user_ticket'],
-            obj['Producto'],
+            obj['producto'],
             obj['created_at'],
             obj['id_pedido'],
             obj['estado'],
@@ -19,7 +19,7 @@ export class Ticket{
     constructor(
         public id_ticket?: number,
         public user_ticket?: number,
-        public Producto?: number,
+        public producto?: number,
         public created_at?: Date,
         public id_pedido?: number,
         public estado?: true,
