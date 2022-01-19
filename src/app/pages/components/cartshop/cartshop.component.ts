@@ -32,6 +32,7 @@ export class CartshopComponent implements OnInit, OnDestroy {
   selectedValue!:User;
   selectedValue2!: MetodoPago;
   Mdisable = false;
+  serviceMode2: any;
  
   constructor(public auth: AuthService,
               public store: StoreService,

@@ -9,7 +9,7 @@
     </div> 
 </div>
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Invetario de Producto" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<nz-modal class="w-full" [(nzVisible)]="isVisible" nzTitle="Inventario de Producto" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <ng-container *nzModalContent>
       
 
@@ -29,10 +29,13 @@
                       <tr>
                           
                           <th class="text-center"># id</th>
+                          <th class="text-center">Fecha</th>
                           <th class="text-center">Detalle</th>
+                          <th class="w-10 text-center">Cantidad</th>
                           <th class="text-center">Valor Unit</th>
                           <th class="text-center">Valor Total</th>
-                          <th class="w-10 text-center">Cantidad</th>
+                          
+                          
                       </tr>
               </thead>
               <tbody >
@@ -40,10 +43,13 @@
                             <tr>
                                  
                                   <td class="text-center" ># {{data.id}} </td>
+                                  <td class="text-center">{{data.update_date | date}}</td>
                                   <td class="text-center" >{{data.detalle}}</td>
+                                  <td class="text-center" >{{data.cantidad}}</td>
                                   <td class="text-center">{{data.valor_unit}}</td>
                                   <td class="text-center">{{data.valor_total}}</td>
-                                  <td class="text-center" >{{data.cantidad}}</td>
+                                  
+                                  
                            </tr>
                                      
                       </ng-container>

@@ -85,6 +85,15 @@
       </ng-template>
 
       <ng-template #modalFooter>
+
+        <mat-slide-toggle 
+        color="warn" 
+        class="m-3" 
+        (click)="setService()" 
+        [(ngModel)]="serviceMode2">Para LLevar
+      </mat-slide-toggle>
+
+
         <mat-slide-toggle 
         color="warn" 
         class="m-3" 

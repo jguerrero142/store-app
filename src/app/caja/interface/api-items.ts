@@ -6,4 +6,5 @@ export interface ApiItems {
     cantidad: number,
     valor_unit: number,
     valor_total: number,
+    update_date: number,
 }
